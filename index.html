@@ -2,17 +2,139 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>inkevink Architecture</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>inkevink | Architecture</title>
+    <!-- 정갈한 영문/한글 폰트 적용 -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Inter:wght@300;400;600&family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
     <style>
-        body { text-align: center; font-family: sans-serif; background-color: #f4f4f4; padding-top: 50px; }
-        h1 { color: #222; }
-        p { color: #555; font-size: 18px; }
-        .icon { font-size: 60px; margin-bottom: 10px; }
+        /* 이미지와 똑같은 감성의 미니멀 스타일 정의 */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body { 
+            font-family: 'Inter', 'Noto Sans KR', sans-serif; 
+            background-color: #f7f4eb; /* 이미지와 유사한 부드러운 아이보리/웜그레이 톤 배경 */
+            color: #2e2e2c; /* 부드러운 검은색 */
+            line-height: 1.6;
+            padding: 60px 10%;
+        }
+
+        /* 네비게이션과 로고 */
+        header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 100px; }
+        .logo { font-size: 24px; font-weight: 400; font-family: sans-serif; letter-spacing: -0.5px; }
+        .nav-links { list-style: none; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .nav-links li { margin-bottom: 6px; }
+        .nav-links a { text-decoration: none; color: #6e6d6a; transition: color 0.2s; }
+        .nav-links a:hover { color: #111; }
+
+        /* 좌측 일러스트 / 우측 텍스트 2단 레이아웃 */
+        .container { display: flex; gap: 10%; margin-bottom: 120px; flex-wrap: wrap; }
+        .left-side { flex: 1; min-width: 300px; display: flex; align-items: flex-start; justify-content: center; }
+        
+        /* Kevin의 스케치나 드로잉 이미지가 들어갈 공간 */
+        .illustration-box { 
+            width: 100%; 
+            max-width: 350px; 
+            aspect-ratio: 1 / 1; 
+            border: 1px dashed #b5b2a9; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 14px; 
+            color: #8c8980;
+            border-radius: 4px;
+        }
+        .illustration-box img { width: 100%; height: 100%; object-fit: contain; }
+
+        .right-side { flex: 1.2; min-width: 300px; }
+        .section-title { font-size: 26px; font-weight: 300; margin-bottom: 50px; color: #111; }
+        
+        .bio-block { margin-bottom: 40px; max-width: 480px; }
+        .bio-subtitle { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #8c8980; margin-bottom: 8px; }
+        .bio-text { font-size: 14px; font-weight: 300; color: #4a4945; text-align: justify; }
+
+        /* 하단 역량(Capabilities) 및 프로젝트 리스트 섹션 */
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; border-top: 1px solid #e3dec3; padding-top: 40px; font-size: 13px; }
+        .grid-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #8c8980; margin-bottom: 12px; }
+        .footer-grid ul { list-style: none; color: #4a4945; font-weight: 300; }
+        .footer-grid ul li { margin-bottom: 6px; }
+        .footer-grid a { color: #4a4945; text-decoration: none; border-bottom: 1px solid #b5b2a9; }
+
+        /* 맨 아래 저작권 문구 */
+        .copyright { margin-top: 100px; font-size: 11px; color: #8c8980; text-transform: uppercase; letter-spacing: 0.5px; }
     </style>
 </head>
 <body>
-    <div class="icon">🏛️🖋️</div>
-    <h1>Kevin Kwon의 건축 공간</h1>
-    <p>inkevink 주소에 오신 것을 환영합니다.</p>
+
+    <!-- 상단 헤더 영역 -->
+    <header>
+        <div class="logo">inkevink</div>
+        <ul class="nav-links">
+            <li><a href="#work">Work</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
+        </ul>
+    </header>
+
+    <!-- 메인 컨텐츠 영역 (2단 배열) -->
+    <div class="container">
+        <!-- 좌측: 건축 스케치나 라인 드로잉 넣는 곳 -->
+        <div class="left-side">
+            <div class="illustration-box">
+                <!-- 나중에 잉크 일러스트나 건축 드로잉 이미지 파일이 생기면 아래 src에 넣으세요 -->
+                <!-- <img src="내그림.png" alt="Kevin Sketch"> -->
+                <span>🎨 이곳에 잉크 드로잉 주입</span>
+            </div>
+        </div>
+        
+        <!-- 우측: 소개 글 영역 -->
+        <div class="right-side" id="about">
+            <h1 class="section-title">About Kevin</h1>
+            
+            <div class="bio-block">
+                <div class="bio-subtitle">The Identity</div>
+                <p class="bio-text">숫자 2, 손끝에서 번지는 잉크(Ink)의 아날로그 감성, 그리고 Kevin Kwon의 아이디어가 만나 탄생한 공간입니다. 컴퓨터 렌더링 이전에 펜과 종이로 건축의 첫 단추를 채웁니다.</p>
+            </div>
+
+            <div class="bio-block">
+                <div class="bio-subtitle">The Architecture</div>
+                <p class="bio-text">2010년생의 시선으로 바라보는 구조와 공간을 탐구합니다. 주거 공간부터 도시 인프라까지, 단순한 건물이 아닌 인간의 삶을 담는 스케치를 깃허브 페이지에 기록하고 있습니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 하단 디테일 정보 영역 -->
+    <footer class="footer-grid">
+        <div>
+            <div class="grid-title">Capabilities</div>
+            <ul>
+                <li>Architectural Sketching</li>
+                <li>Hand Drawing & Ink Art</li>
+                <li>Spatial Design</li>
+                <li>Concept Development</li>
+            </ul>
+        </div>
+        <div>
+            <div class="grid-title">Current Focus</div>
+            <ul>
+                <li>Minimalist Structures</li>
+                <li>Analogue Blueprints</li>
+                <li>Perspective Drawing</li>
+            </ul>
+        </div>
+        <div>
+            <div class="grid-title">Contact</div>
+            <ul>
+                <li><a href="https://instagram.com" target="_blank">Instagram Direct Message</a></li>
+                <li>Seoul, South Korea</li>
+            </ul>
+        </div>
+    </footer>
+
+    <div class="copyright">
+        © 2026 Studio inkevink. All Rights Reserved.
+    </div>
+
 </body>
 </html>
