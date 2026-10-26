@@ -17,18 +17,18 @@
         
         body { 
             font-family: 'Inter', 'Noto Sans KR', sans-serif;
-            background-color: #f3f3f5; /* 이미지와 동일한 부드러운 밝은 회색 배경 */
+            background-color: #f3f3f5;
             color: #111111;
             display: flex;
             justify-content: center;
             min-height: 100vh;
-            padding: 20px 16px 120px 16px; /* 하단 여백 확보 */
+            padding: 20px 16px 120px 16px;
             position: relative;
         }
 
         .container {
             width: 100%;
-            max-width: 500px; /* 모바일 및 태블릿에 최적화된 폭 */
+            max-width: 500px;
             text-align: center;
         }
 
@@ -74,7 +74,8 @@
             border-radius: 50%;
             object-fit: cover;
             margin-bottom: 18px;
-            background-color: #e9ecef;
+            background-color: #000000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
         .profile-name {
@@ -88,20 +89,20 @@
         .links-container {
             display: flex;
             flex-direction: column;
-            gap: 14px; /* 버튼 사이 간격 */
+            gap: 14px;
         }
 
-        /* 이미지 스타일의 둥근 직사각형 버튼 */
+        /* 둥근 직사각형 버튼 */
         .link-btn {
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
             width: 100%;
-            min-height: 68px; /* 이미지처럼 넉넉한 버튼 높이 */
-            padding: 12px 48px; /* 양옆 아이콘과 겹치지 않게 여백 설정 */
+            min-height: 68px;
+            padding: 12px 48px;
             background-color: #ffffff;
-            border-radius: 14px; /* 이미지와 동일한 라운드 값 */
+            border-radius: 14px;
             font-size: 16px;
             font-weight: 600;
             color: #111111;
@@ -115,7 +116,7 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
         }
 
-        /* 첫 번째 버튼처럼 좌측에 들어가는 썸네일 이미지 */
+        /* 버튼 좌측 썸네일 이미지 */
         .btn-thumb {
             position: absolute;
             left: 10px;
@@ -145,7 +146,7 @@
             color: #111111;
         }
 
-        /* 하단 그라데이션 및 플로팅 배지 (이미지 하단 효과 재현) */
+        /* 하단 그라데이션 및 플로팅 배지 */
         .bottom-overlay {
             position: fixed;
             bottom: 0;
@@ -156,7 +157,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            pointer-events: none; /* 뒤쪽 버튼 클릭 방해 방지 */
+            pointer-events: none;
         }
 
         .floating-pill {
@@ -190,13 +191,11 @@
     <div class="container">
         <!-- 상단 아이콘 바 -->
         <div class="top-bar">
-            <!-- 좌측 로고 아이콘 -->
             <button class="icon-btn" aria-label="Logo">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M12 2v20M17 5l-10 14M7 5l10 14M2 12h20"/>
                 </svg>
             </button>
-            <!-- 우측 공유 아이콘 -->
             <button class="icon-btn" aria-label="Share" onclick="alert('링크가 복사되었습니다!')">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
@@ -206,36 +205,34 @@
             </button>
         </div>
 
-        <!-- 프로필 영역 -->
+        <!-- 프로필 영역 (첨부해주신 KK.png 로고 기본 내장) -->
         <div class="profile-container">
-            <!-- 원하는 프로필 이미지 주소(URL)나 파일 경로를 src에 넣으세요 -->
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80" alt="Profile" class="profile-image">
+            <!-- 
+                파일을 직접 연결하려면 아래 img 태그 대신 
+                <img src="KK.png" alt="@archmonth 프로필" class="profile-image"> 를 사용하세요. 
+            -->
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000'><rect width='1000' height='1000' fill='%23000000'/><path d='M 274 334 L 724 334 L 890 666 L 812 666 L 678 397 L 543 666 L 110 666 Z M 320 398 L 256 526 L 384 526 Z' fill='%23ffffff' fill-rule='evenodd'/></svg>" alt="@archmonth 프로필" class="profile-image">
             <h1 class="profile-name">@archmonth</h1>
         </div>
 
         <!-- 링크 버튼 모음 -->
         <div class="links-container">
             
-            <!-- 1. 썸네일이 있는 링크 버튼 (첫 번째 버튼 예시) -->
+            <!-- 1. 썸네일이 있는 첫 번째 링크 버튼 (좌측 썸네일에도 동일 로고 적용) -->
             <a href="https://behance.net" class="link-btn" target="_blank">
-                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=150&auto=format&fit=crop&q=80" alt="Thumbnail" class="btn-thumb">
-                <span>archmonth.app.link</span>
+                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000'><rect width='1000' height='1000' fill='%23000000'/><path d='M 274 334 L 724 334 L 890 666 L 812 666 L 678 397 L 543 666 L 110 666 Z M 320 398 L 256 526 L 384 526 Z' fill='%23ffffff' fill-rule='evenodd'/></svg>" alt="Thumbnail" class="btn-thumb">
+                <span>Behance Portfolio</span>
                 <span class="btn-more">⋮</span>
             </a>
 
             <!-- 2. 기본 텍스트 링크 버튼들 -->
-            <a href="https://gumroad.com" class="link-btn" target="_blank">
-                <span>Gumroad Storefront</span>
-                <span class="btn-more">⋮</span>
-            </a>
-
-            <a href="https://youtube.com" class="link-btn" target="_blank">
-                <span>Youtube (Archmonth)</span>
-                <span class="btn-more">⋮</span>
-            </a>
-
             <a href="https://instagram.com" class="link-btn" target="_blank">
                 <span>Instagram (@archmonth)</span>
+                <span class="btn-more">⋮</span>
+            </a>
+
+            <a href="https://gumroad.com" class="link-btn" target="_blank">
+                <span>Gumroad Shop</span>
                 <span class="btn-more">⋮</span>
             </a>
 
@@ -247,7 +244,7 @@
         </div>
     </div>
 
-    <!-- 하단 플로팅 배지 (원하지 않으시면 이 div 전체를 지우셔도 됩니다) -->
+    <!-- 하단 플로팅 배지 -->
     <div class="bottom-overlay" id="bottomBadge">
         <div class="floating-pill">
             <span>linktr.ee/archmonth</span>
