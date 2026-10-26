@@ -3,82 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>archmonth | 링크트리</title>
-    <!-- 정갈한 영문/한글 폰트 적용 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
+    <title>archmonth | 리틀리</title>
+    <!-- 리틀리 감성의 부드러운 폰트 -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* 미니멀 감성의 깔끔한 디자인 정의 */
+        /* 리틀리(Littly) 스타일 브랜딩 디자인 */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body { 
-            font-family: 'Inter', 'Noto Sans KR', sans-serif;
-            background-color: #fcfbfa;
-            color: #111;
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f8f9fa; /* 리틀리 특유의 화사하고 깔끔한 배경 */
+            color: #222222;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             min-height: 100vh;
-            padding: 40px 20px;
+            padding: 60px 20px;
         }
 
         .container {
             width: 100%;
-            max-width: 480px;
+            max-width: 400px; /* 리틀리 최적의 모바일 가로폭 */
             text-align: center;
         }
 
         .profile-container {
-            margin-bottom: 40px;
+            margin-bottom: 35px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* 리틀리 스타일의 원형 프로필 플레이스홀더 */
+        .profile-image {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background-color: #e9ecef;
+            border: 2px solid #ffffff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 28px;
         }
 
         .profile-name {
-            font-size: 26px;
-            font-weight: 400;
-            letter-spacing: -0.5px;
-            margin-bottom: 8px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #111111;
+            margin-bottom: 6px;
         }
 
         .profile-bio {
             font-size: 14px;
-            font-weight: 300;
-            color: #6e6d6a;
+            font-weight: 400;
+            color: #666666;
         }
 
         .links-container {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 12px; /* 깔끔하게 정돈된 버튼 간격 */
         }
 
+        /* 리틀리 스타일의 라운드형 버튼 */
         .link-btn {
-            display: block;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             width: 100%;
-            padding: 16px;
+            padding: 16px 20px;
             background-color: #ffffff;
-            border: 1px solid #e3dec3;
-            border-radius: 8px;
+            border: 1px solid rgba(0,0,0,0.04);
+            border-radius: 30px; /* 완벽하게 둥근 모서리 */
             font-size: 15px;
-            font-weight: 400;
-            color: #4a4945;
+            font-weight: 500;
+            color: #333333;
             text-decoration: none;
-            transition: all 0.2s ease;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); /* 은은한 섀도우 */
         }
 
+        /* 버튼 마우스 오버 / 터치 시 부드러운 반응 */
         .link-btn:hover {
-            background-color: #111111;
-            color: #ffffff;
-            border-color: #111111;
-            transform: translateY(-2px);
+            background-color: #f1f3f5;
+            transform: scale(1.01);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
         }
 
         .copyright {
             margin-top: 60px;
-            font-size: 11px;
-            color: #8c8980;
-            text-transform: uppercase;
+            font-size: 12px;
+            color: #adb5bd;
             letter-spacing: 0.5px;
         }
     </style>
@@ -86,33 +106,26 @@
 <body>
 
     <div class="container">
-        <!-- 프로필 상단 영역 -->
+        <!-- 리틀리형 프로필 영역 -->
         <div class="profile-container">
-            <h1 class="profile-name">archmonth</h1>
+            <div class="profile-image">🏛️</div> <!-- 임시 아이콘 (나중에 사진으로 대체 가능) -->
+            <h1 class="profile-name">@archmonth</h1>
             <p class="profile-bio">Welcome to my space</p>
         </div>
 
-        <!-- 링크 버튼 모음 영역 -->
+        <!-- 리틀리 스타일 버튼 모음 -->
         <div class="links-container">
-            <!-- 인스타그램 -->
-            <a href="https://www.instagram.com/archmonth/" class="link-btn" target="_blank">Instagram</a>
-            
-            <!-- 비핸스 -->
+            <a href="https://instagram.com" class="link-btn" target="_blank">Instagram</a>
             <a href="https://behance.net" class="link-btn" target="_blank">Behance Portfolio</a>
-            
-            <!-- 검로드 -->
-            <a href="https://archmonth.gumroad.com" class="link-btn" target="_blank">Gumroad Shop</a>
-            
-            <!-- 핀터레스트 -->
+            <a href="https://gumroad.com" class="link-btn" target="_blank">Gumroad Shop</a>
             <a href="https://pinterest.com" class="link-btn" target="_blank">Pinterest</a>
         </div>
 
-        <!-- 하단 푸터 로고 -->
+        <!-- 하단 푸터 -->
         <div class="copyright">
-            © 2026 archmonth. All Rights Reserved.
+            © archmonth. All Rights Reserved.
         </div>
     </div>
 
 </body>
 </html>
-
