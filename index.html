@@ -7,7 +7,7 @@
     <!-- 깔끔한 산세리프 폰트 (Inter & Noto Sans KR) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         * { 
             box-sizing: border-box; 
@@ -22,22 +22,23 @@
             display: flex;
             justify-content: center;
             min-height: 100vh;
-            padding: 20px 16px 120px 16px;
-            position: relative;
+            padding: 20px 16px 80px 16px;
         }
 
         .container {
             width: 100%;
             max-width: 500px;
             text-align: center;
+            position: relative;
         }
 
-        /* 상단 네비게이션 버튼 영역 (좌측 로고 / 우측 공유) */
+        /* 상단 네비게이션 버튼 영역 */
         .top-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 24px;
+            position: relative;
         }
 
         .icon-btn {
@@ -58,6 +59,45 @@
         .icon-btn:hover {
             background-color: #f8f9fa;
             transform: scale(1.03);
+        }
+
+        /* 심플한 검은색 동그라미 로고 */
+        .circle-logo {
+            width: 18px;
+            height: 18px;
+            background-color: #000000;
+            border-radius: 50%;
+            border: 1.5px solid #ffffff;
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+            display: inline-block;
+        }
+
+        /* 좌측 상단 버튼 클릭 시 나타나는 설명 박스 */
+        .description-box {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.25s ease-in-out;
+            margin-bottom: 0;
+        }
+
+        .description-box.active {
+            max-height: 100px;
+            opacity: 1;
+            margin-bottom: 24px;
+        }
+
+        .description-content {
+            background-color: #ffffff;
+            padding: 14px 18px;
+            border-radius: 12px;
+            font-size: 13.5px;
+            font-weight: 500;
+            color: #333333;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            letter-spacing: -0.2px;
+            line-height: 1.5;
+            word-break: keep-all;
         }
 
         /* 프로필 영역 */
@@ -145,45 +185,6 @@
             background-color: #f1f3f5;
             color: #111111;
         }
-
-        /* 하단 그라데이션 및 플로팅 배지 */
-        .bottom-overlay {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.25), transparent);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            pointer-events: none;
-        }
-
-        .floating-pill {
-            pointer-events: auto;
-            background-color: #ffffff;
-            padding: 12px 20px;
-            border-radius: 30px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 15px;
-            font-weight: 600;
-            color: #111111;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-            cursor: pointer;
-        }
-
-        .close-btn {
-            background: none;
-            border: none;
-            font-size: 16px;
-            cursor: pointer;
-            color: #333333;
-            display: flex;
-            align-items: center;
-        }
     </style>
 </head>
 <body>
@@ -191,11 +192,12 @@
     <div class="container">
         <!-- 상단 아이콘 바 -->
         <div class="top-bar">
-            <button class="icon-btn" aria-label="Logo">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 2v20M17 5l-10 14M7 5l10 14M2 12h20"/>
-                </svg>
+            <!-- 좌측 동그라미 로고 버튼 (클릭 시 설명 문구 토글) -->
+            <button class="icon-btn" aria-label="Info" onclick="toggleDescription()">
+                <span class="circle-logo"></span>
             </button>
+
+            <!-- 우측 공유 버튼 -->
             <button class="icon-btn" aria-label="Share" onclick="alert('링크가 복사되었습니다!')">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
@@ -205,53 +207,56 @@
             </button>
         </div>
 
-        <!-- 프로필 영역 (KK.png 로고 기본 내장) -->
+        <!-- 좌측 상단 동그라미 버튼 클릭 시 나타나는 설명 영역 -->
+        <div class="description-box" id="descBox">
+            <div class="description-content">
+                Kevin Kwon ｜ Architecture in the Making｜ Month by Month
+            </div>
+        </div>
+
+        <!-- 프로필 영역 -->
         <div class="profile-container">
             <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000'><rect width='1000' height='1000' fill='%23000000'/><path d='M 274 334 L 724 334 L 890 666 L 812 666 L 678 397 L 543 666 L 110 666 Z M 320 398 L 256 526 L 384 526 Z' fill='%23ffffff' fill-rule='evenodd'/></svg>" alt="@archmonth 프로필" class="profile-image">
             <h1 class="profile-name">@archmonth</h1>
         </div>
 
-        <!-- 링크 버튼 모음 -->
+        <!-- 링크 버튼 모음 (1. YouTube / 2. Instagram / 3. Pinterest / 4. Wallpaper) -->
         <div class="links-container">
             
-            <!-- 1. 첫 번째 버튼: YouTube (@archmonth) -->
+            <!-- 1. YouTube -->
             <a href="https://www.youtube.com/@archmonth" class="link-btn" target="_blank">
                 <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000'><rect width='1000' height='1000' fill='%23000000'/><path d='M 274 334 L 724 334 L 890 666 L 812 666 L 678 397 L 543 666 L 110 666 Z M 320 398 L 256 526 L 384 526 Z' fill='%23ffffff' fill-rule='evenodd'/></svg>" alt="Thumbnail" class="btn-thumb">
-                <span>YouTube (@archmonth)</span>
+                <span>YouTube</span>
                 <span class="btn-more">⋮</span>
             </a>
 
-            <!-- 2. 나머지 링크 버튼들 -->
-            <a href="https://behance.net" class="link-btn" target="_blank">
-                <span>Behance Portfolio</span>
-                <span class="btn-more">⋮</span>
-            </a>
-
+            <!-- 2. Instagram -->
             <a href="https://instagram.com" class="link-btn" target="_blank">
-                <span>Instagram (@archmonth)</span>
+                <span>Instagram</span>
                 <span class="btn-more">⋮</span>
             </a>
 
-            <a href="https://gumroad.com" class="link-btn" target="_blank">
-                <span>Gumroad Shop</span>
-                <span class="btn-more">⋮</span>
-            </a>
-
+            <!-- 3. Pinterest -->
             <a href="https://pinterest.com" class="link-btn" target="_blank">
-                <span>Pinterest (@archmonth)</span>
+                <span>Pinterest</span>
+                <span class="btn-more">⋮</span>
+            </a>
+
+            <!-- 4. Wallpaper (Gumroad) -->
+            <a href="https://gumroad.com" class="link-btn" target="_blank">
+                <span>Wallpaper</span>
                 <span class="btn-more">⋮</span>
             </a>
 
         </div>
     </div>
 
-    <!-- 하단 플로팅 배지 -->
-    <div class="bottom-overlay" id="bottomBadge">
-        <div class="floating-pill">
-            <span>linktr.ee/archmonth</span>
-            <button class="close-btn" onclick="document.getElementById('bottomBadge').style.display='none'">✕</button>
-        </div>
-    </div>
+    <script>
+        function toggleDescription() {
+            const descBox = document.getElementById('descBox');
+            descBox.classList.toggle('active');
+        }
+    </script>
 
 </body>
 </html>
