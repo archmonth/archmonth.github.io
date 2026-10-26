@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@archmonth | 프로필 링크</title>
-    <!-- 깔끔한 산세리프 폰트 (Inter & Noto Sans KR) -->
+    <title>@archmonth</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
@@ -22,14 +21,13 @@
             display: flex;
             justify-content: center;
             min-height: 100vh;
-            padding: 20px 16px 80px 16px;
+            padding: 20px 16px 60px 16px;
         }
 
         .container {
             width: 100%;
             max-width: 500px;
             text-align: center;
-            position: relative;
         }
 
         /* 상단 네비게이션 버튼 영역 */
@@ -38,7 +36,6 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 24px;
-            position: relative;
         }
 
         .icon-btn {
@@ -59,45 +56,6 @@
         .icon-btn:hover {
             background-color: #f8f9fa;
             transform: scale(1.03);
-        }
-
-        /* 심플한 검은색 동그라미 로고 */
-        .circle-logo {
-            width: 18px;
-            height: 18px;
-            background-color: #000000;
-            border-radius: 50%;
-            border: 1.5px solid #ffffff;
-            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
-            display: inline-block;
-        }
-
-        /* 좌측 상단 버튼 클릭 시 나타나는 설명 박스 */
-        .description-box {
-            max-height: 0;
-            opacity: 0;
-            overflow: hidden;
-            transition: all 0.25s ease-in-out;
-            margin-bottom: 0;
-        }
-
-        .description-box.active {
-            max-height: 100px;
-            opacity: 1;
-            margin-bottom: 24px;
-        }
-
-        .description-content {
-            background-color: #ffffff;
-            padding: 14px 18px;
-            border-radius: 12px;
-            font-size: 13.5px;
-            font-weight: 500;
-            color: #333333;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            letter-spacing: -0.2px;
-            line-height: 1.5;
-            word-break: keep-all;
         }
 
         /* 프로필 영역 */
@@ -123,6 +81,31 @@
             font-weight: 700;
             color: #000000;
             letter-spacing: -0.3px;
+        }
+
+        /* 원형 버튼 클릭 시 나타나는 설명 문구 */
+        .profile-bio {
+            display: none; /* 기본 상태에서는 숨김 */
+            margin-top: 12px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #444444;
+            background-color: #ffffff;
+            padding: 10px 16px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            line-height: 1.5;
+            word-break: keep-all;
+        }
+
+        .profile-bio.show {
+            display: inline-block; /* 버튼 클릭 시 표시 */
+            animation: fadeIn 0.2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-4px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* 링크 버튼 모음 영역 */
@@ -156,7 +139,7 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
         }
 
-        /* 버튼 좌측 썸네일 이미지 */
+        /* 첫 번째 버튼 좌측 썸네일 이미지 */
         .btn-thumb {
             position: absolute;
             left: 10px;
@@ -178,12 +161,6 @@
             align-items: center;
             color: #777777;
             border-radius: 50%;
-            transition: background-color 0.15s;
-        }
-
-        .btn-more:hover {
-            background-color: #f1f3f5;
-            color: #111111;
         }
     </style>
 </head>
@@ -192,12 +169,14 @@
     <div class="container">
         <!-- 상단 아이콘 바 -->
         <div class="top-bar">
-            <!-- 좌측 동그라미 로고 버튼 (클릭 시 설명 문구 토글) -->
-            <button class="icon-btn" aria-label="Info" onclick="toggleDescription()">
-                <span class="circle-logo"></span>
+            <!-- 좌측: 별표 대신 심플한 검은색 원(동그라미) 아이콘 -->
+            <button class="icon-btn" aria-label="Description" onclick="toggleBio()">
+                <svg width="20" height="20" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="8" fill="#000000" stroke="#e0e0e0" stroke-width="1.5"/>
+                </svg>
             </button>
 
-            <!-- 우측 공유 버튼 -->
+            <!-- 우측: 공유 아이콘 -->
             <button class="icon-btn" aria-label="Share" onclick="alert('링크가 복사되었습니다!')">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
@@ -207,42 +186,46 @@
             </button>
         </div>
 
-        <!-- 좌측 상단 동그라미 버튼 클릭 시 나타나는 설명 영역 -->
-        <div class="description-box" id="descBox">
-            <div class="description-content">
-                Kevin Kwon ｜ Architecture in the Making｜ Month by Month
-            </div>
-        </div>
-
         <!-- 프로필 영역 -->
         <div class="profile-container">
             <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000'><rect width='1000' height='1000' fill='%23000000'/><path d='M 274 334 L 724 334 L 890 666 L 812 666 L 678 397 L 543 666 L 110 666 Z M 320 398 L 256 526 L 384 526 Z' fill='%23ffffff' fill-rule='evenodd'/></svg>" alt="@archmonth 프로필" class="profile-image">
             <h1 class="profile-name">@archmonth</h1>
+            
+            <!-- 좌측 상단 원 버튼을 누르면 나타나는 설명 문구 -->
+            <p class="profile-bio" id="bioText">
+                Kevin Kwon ｜ Architecture in the Making｜ Month by Month
+            </p>
         </div>
 
-        <!-- 링크 버튼 모음 (1. YouTube / 2. Instagram / 3. Pinterest / 4. Wallpaper) -->
+        <!-- 링크 버튼 모음 (요청하신 1~5번 순서 및 텍스트) -->
         <div class="links-container">
             
-            <!-- 1. YouTube -->
-            <a href="https://www.youtube.com/@archmonth" class="link-btn" target="_blank">
+            <!-- 1. Behance Portfolio -->
+            <a href="https://behance.net" class="link-btn" target="_blank">
                 <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000'><rect width='1000' height='1000' fill='%23000000'/><path d='M 274 334 L 724 334 L 890 666 L 812 666 L 678 397 L 543 666 L 110 666 Z M 320 398 L 256 526 L 384 526 Z' fill='%23ffffff' fill-rule='evenodd'/></svg>" alt="Thumbnail" class="btn-thumb">
+                <span>Behance Portfolio</span>
+                <span class="btn-more">⋮</span>
+            </a>
+
+            <!-- 2. YouTube -->
+            <a href="https://www.youtube.com/@archmonth" class="link-btn" target="_blank">
                 <span>YouTube</span>
                 <span class="btn-more">⋮</span>
             </a>
 
-            <!-- 2. Instagram -->
+            <!-- 3. Instagram -->
             <a href="https://instagram.com" class="link-btn" target="_blank">
                 <span>Instagram</span>
                 <span class="btn-more">⋮</span>
             </a>
 
-            <!-- 3. Pinterest -->
+            <!-- 4. Pinterest -->
             <a href="https://pinterest.com" class="link-btn" target="_blank">
                 <span>Pinterest</span>
                 <span class="btn-more">⋮</span>
             </a>
 
-            <!-- 4. Wallpaper (Gumroad) -->
+            <!-- 5. Wallpaper (기존 Gumroad Shop) -->
             <a href="https://gumroad.com" class="link-btn" target="_blank">
                 <span>Wallpaper</span>
                 <span class="btn-more">⋮</span>
@@ -252,9 +235,9 @@
     </div>
 
     <script>
-        function toggleDescription() {
-            const descBox = document.getElementById('descBox');
-            descBox.classList.toggle('active');
+        function toggleBio() {
+            const bio = document.getElementById('bioText');
+            bio.classList.toggle('show');
         }
     </script>
 
