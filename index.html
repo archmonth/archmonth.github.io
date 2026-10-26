@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 요청하신 영어 사이트 제목 -->
     <title>Arch Month | Profile</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -111,10 +112,13 @@
             width: 96px;
             height: 96px;
             border-radius: 50%;
-            object-fit: cover;
             margin-bottom: 18px;
             background-color: #000000;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
         }
 
         .profile-name {
@@ -131,7 +135,7 @@
             gap: 14px;
         }
 
-        /* 둥근 직사각형 버튼 */
+        /* 둥근 직사각형 버튼 (우측 점 3개 완전 삭제됨) */
         .link-btn {
             position: relative;
             display: flex;
@@ -155,14 +159,17 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
         }
 
-        /* 첫 번째 버튼 좌측 썸네일 이미지 */
-        .btn-thumb {
+        /* 첫 번째 버튼 좌측: 흰색 바탕에 검은색 로고 (KK_2.png 스타일) */
+        .btn-thumb-box {
             position: absolute;
             left: 10px;
             width: 48px;
             height: 48px;
             border-radius: 8px;
-            object-fit: cover;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     </style>
 </head>
@@ -193,18 +200,28 @@
             </div>
         </div>
 
-        <!-- 프로필 영역 (검은색 바탕 로고) -->
+        <!-- 프로필 영역 (검은색 바탕에 흰색 로고) -->
         <div class="profile-container">
-            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000'><rect width='1000' height='1000' fill='%23000000'/><path d='M 274 334 L 724 334 L 890 666 L 812 666 L 678 397 L 543 666 L 110 666 Z M 320 398 L 256 526 L 384 526 Z' fill='%23ffffff' fill-rule='evenodd'/></svg>" alt="@archmonth Profile" class="profile-image">
+            <div class="profile-image">
+                <svg width="96" height="96" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="1000" height="1000" fill="#000000"/>
+                    <path d="M 274 334 L 724 334 L 890 666 L 812 666 L 678 397 L 543 666 L 110 666 Z M 320 398 L 256 526 L 384 526 Z" fill="#ffffff" fill-rule="evenodd"/>
+                </svg>
+            </div>
             <h1 class="profile-name">@archmonth</h1>
         </div>
 
-        <!-- 링크 버튼 모음 -->
+        <!-- 링크 버튼 모음 (오른쪽 점 3개 모두 제거됨) -->
         <div class="links-container">
             
-            <!-- 1. Behance Portfolio (흰색 바탕의 검은색 로고 썸네일 적용) -->
+            <!-- 1. Behance Portfolio (좌측에 흰색 배경 + 검은색 로고 적용) -->
             <a href="https://behance.net" class="link-btn" target="_blank">
-                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000'><rect width='1000' height='1000' fill='%23ffffff'/><path d='M 274 334 L 724 334 L 890 666 L 812 666 L 678 397 L 543 666 L 110 666 Z M 320 398 L 256 526 L 384 526 Z' fill='%23000000' fill-rule='evenodd'/></svg>" alt="Behance Thumbnail" class="btn-thumb">
+                <div class="btn-thumb-box">
+                    <svg width="44" height="44" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="1000" height="1000" fill="#ffffff"/>
+                        <path d="M 274 334 L 724 334 L 890 666 L 812 666 L 678 397 L 543 666 L 110 666 Z M 320 398 L 256 526 L 384 526 Z" fill="#000000" fill-rule="evenodd"/>
+                    </svg>
+                </div>
                 <span>Behance Portfolio</span>
             </a>
 
@@ -240,4 +257,3 @@
 
 </body>
 </html>
-
