@@ -3,129 +3,258 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>archmonth | 리틀리</title>
-    <!-- 리틀리 감성의 부드러운 폰트 -->
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>@archmonth | 프로필 링크</title>
+    <!-- 깔끔한 산세리프 폰트 (Inter & Noto Sans KR) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* 리틀리(Littly) 스타일 브랜딩 디자인 */
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
         
         body { 
-            font-family: 'Noto Sans KR', sans-serif;
-            background-color: #f8f9fa; /* 리틀리 특유의 화사하고 깔끔한 배경 */
-            color: #222222;
+            font-family: 'Inter', 'Noto Sans KR', sans-serif;
+            background-color: #f3f3f5; /* 이미지와 동일한 부드러운 밝은 회색 배경 */
+            color: #111111;
             display: flex;
             justify-content: center;
-            align-items: flex-start;
             min-height: 100vh;
-            padding: 60px 20px;
+            padding: 20px 16px 120px 16px; /* 하단 여백 확보 */
+            position: relative;
         }
 
         .container {
             width: 100%;
-            max-width: 400px; /* 리틀리 최적의 모바일 가로폭 */
+            max-width: 500px; /* 모바일 및 태블릿에 최적화된 폭 */
             text-align: center;
         }
 
-        .profile-container {
-            margin-bottom: 35px;
+        /* 상단 네비게이션 버튼 영역 (좌측 로고 / 우측 공유) */
+        .top-bar {
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
+            margin-bottom: 24px;
         }
 
-        /* 리틀리 스타일의 원형 프로필 플레이스홀더 */
-        .profile-image {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            background-color: #e9ecef;
-            border: 2px solid #ffffff;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            margin-bottom: 16px;
+        .icon-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            background-color: #ffffff;
+            border: none;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 28px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            transition: transform 0.15s ease, background-color 0.15s ease;
+            color: #111111;
+        }
+
+        .icon-btn:hover {
+            background-color: #f8f9fa;
+            transform: scale(1.03);
+        }
+
+        /* 프로필 영역 */
+        .profile-container {
+            margin-bottom: 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-image {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 18px;
+            background-color: #e9ecef;
         }
 
         .profile-name {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 700;
-            color: #111111;
-            margin-bottom: 6px;
+            color: #000000;
+            letter-spacing: -0.3px;
         }
 
-        .profile-bio {
-            font-size: 14px;
-            font-weight: 400;
-            color: #666666;
-        }
-
+        /* 링크 버튼 모음 영역 */
         .links-container {
             display: flex;
             flex-direction: column;
-            gap: 12px; /* 깔끔하게 정돈된 버튼 간격 */
+            gap: 14px; /* 버튼 사이 간격 */
         }
 
-        /* 리틀리 스타일의 라운드형 버튼 */
+        /* 이미지 스타일의 둥근 직사각형 버튼 */
         .link-btn {
+            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
             width: 100%;
-            padding: 16px 20px;
+            min-height: 68px; /* 이미지처럼 넉넉한 버튼 높이 */
+            padding: 12px 48px; /* 양옆 아이콘과 겹치지 않게 여백 설정 */
             background-color: #ffffff;
-            border: 1px solid rgba(0,0,0,0.04);
-            border-radius: 30px; /* 완벽하게 둥근 모서리 */
-            font-size: 15px;
-            font-weight: 500;
-            color: #333333;
+            border-radius: 14px; /* 이미지와 동일한 라운드 값 */
+            font-size: 16px;
+            font-weight: 600;
+            color: #111111;
             text-decoration: none;
-            transition: all 0.2s ease-in-out;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); /* 은은한 섀도우 */
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
         }
 
-        /* 버튼 마우스 오버 / 터치 시 부드러운 반응 */
         .link-btn:hover {
-            background-color: #f1f3f5;
             transform: scale(1.01);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
         }
 
-        .copyright {
-            margin-top: 60px;
-            font-size: 12px;
-            color: #adb5bd;
-            letter-spacing: 0.5px;
+        /* 첫 번째 버튼처럼 좌측에 들어가는 썸네일 이미지 */
+        .btn-thumb {
+            position: absolute;
+            left: 10px;
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        /* 우측 점 3개(더보기) 아이콘 */
+        .btn-more {
+            position: absolute;
+            right: 14px;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #777777;
+            border-radius: 50%;
+            transition: background-color 0.15s;
+        }
+
+        .btn-more:hover {
+            background-color: #f1f3f5;
+            color: #111111;
+        }
+
+        /* 하단 그라데이션 및 플로팅 배지 (이미지 하단 효과 재현) */
+        .bottom-overlay {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.25), transparent);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none; /* 뒤쪽 버튼 클릭 방해 방지 */
+        }
+
+        .floating-pill {
+            pointer-events: auto;
+            background-color: #ffffff;
+            padding: 12px 20px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #111111;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+            cursor: pointer;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            color: #333333;
+            display: flex;
+            align-items: center;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- 리틀리형 프로필 영역 -->
+        <!-- 상단 아이콘 바 -->
+        <div class="top-bar">
+            <!-- 좌측 로고 아이콘 -->
+            <button class="icon-btn" aria-label="Logo">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2v20M17 5l-10 14M7 5l10 14M2 12h20"/>
+                </svg>
+            </button>
+            <!-- 우측 공유 아이콘 -->
+            <button class="icon-btn" aria-label="Share" onclick="alert('링크가 복사되었습니다!')">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+                    <polyline points="16 6 12 2 8 6"/>
+                    <line x1="12" y1="2" x2="12" y2="15"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- 프로필 영역 -->
         <div class="profile-container">
-            <div class="profile-image">🏛️</div> <!-- 임시 아이콘 (나중에 사진으로 대체 가능) -->
+            <!-- 원하는 프로필 이미지 주소(URL)나 파일 경로를 src에 넣으세요 -->
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80" alt="Profile" class="profile-image">
             <h1 class="profile-name">@archmonth</h1>
-            <p class="profile-bio">Welcome to my space</p>
         </div>
 
-        <!-- 리틀리 스타일 버튼 모음 -->
+        <!-- 링크 버튼 모음 -->
         <div class="links-container">
-            <a href="https://instagram.com" class="link-btn" target="_blank">Instagram</a>
-            <a href="https://behance.net" class="link-btn" target="_blank">Behance Portfolio</a>
-            <a href="https://gumroad.com" class="link-btn" target="_blank">Gumroad Shop</a>
-            <a href="https://pinterest.com" class="link-btn" target="_blank">Pinterest</a>
-        </div>
+            
+            <!-- 1. 썸네일이 있는 링크 버튼 (첫 번째 버튼 예시) -->
+            <a href="https://behance.net" class="link-btn" target="_blank">
+                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=150&auto=format&fit=crop&q=80" alt="Thumbnail" class="btn-thumb">
+                <span>archmonth.app.link</span>
+                <span class="btn-more">⋮</span>
+            </a>
 
-        <!-- 하단 푸터 -->
-        <div class="copyright">
-            © archmonth. All Rights Reserved.
+            <!-- 2. 기본 텍스트 링크 버튼들 -->
+            <a href="https://gumroad.com" class="link-btn" target="_blank">
+                <span>Gumroad Storefront</span>
+                <span class="btn-more">⋮</span>
+            </a>
+
+            <a href="https://youtube.com" class="link-btn" target="_blank">
+                <span>Youtube (Archmonth)</span>
+                <span class="btn-more">⋮</span>
+            </a>
+
+            <a href="https://instagram.com" class="link-btn" target="_blank">
+                <span>Instagram (@archmonth)</span>
+                <span class="btn-more">⋮</span>
+            </a>
+
+            <a href="https://pinterest.com" class="link-btn" target="_blank">
+                <span>Pinterest (@archmonth)</span>
+                <span class="btn-more">⋮</span>
+            </a>
+
+        </div>
+    </div>
+
+    <!-- 하단 플로팅 배지 (원하지 않으시면 이 div 전체를 지우셔도 됩니다) -->
+    <div class="bottom-overlay" id="bottomBadge">
+        <div class="floating-pill">
+            <span>linktr.ee/archmonth</span>
+            <button class="close-btn" onclick="document.getElementById('bottomBadge').style.display='none'">✕</button>
         </div>
     </div>
 
 </body>
 </html>
+
