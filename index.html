@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@archmonth | 프로필 링크</title>
-    <!-- 깔끔한 산세리프 폰트 (Inter & Noto Sans KR) -->
+    <title>Arch Month | Profile</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
@@ -140,7 +139,7 @@
             align-items: center;
             width: 100%;
             min-height: 68px;
-            padding: 12px 48px;
+            padding: 12px 64px;
             background-color: #ffffff;
             border-radius: 14px;
             font-size: 16px;
@@ -156,7 +155,7 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
         }
 
-        /* 버튼 좌측 썸네일 이미지 */
+        /* 첫 번째 버튼 좌측 썸네일 이미지 */
         .btn-thumb {
             position: absolute;
             left: 10px;
@@ -164,26 +163,6 @@
             height: 48px;
             border-radius: 8px;
             object-fit: cover;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        /* 우측 점 3개(더보기) 아이콘 */
-        .btn-more {
-            position: absolute;
-            right: 14px;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #777777;
-            border-radius: 50%;
-            transition: background-color 0.15s;
-        }
-
-        .btn-more:hover {
-            background-color: #f1f3f5;
-            color: #111111;
         }
     </style>
 </head>
@@ -198,7 +177,7 @@
             </button>
 
             <!-- 우측 공유 버튼 -->
-            <button class="icon-btn" aria-label="Share" onclick="alert('링크가 복사되었습니다!')">
+            <button class="icon-btn" aria-label="Share" onclick="alert('Link copied!')">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
                     <polyline points="16 6 12 2 8 6"/>
@@ -214,44 +193,39 @@
             </div>
         </div>
 
-        <!-- 프로필 영역 -->
+        <!-- 프로필 영역 (검은색 바탕 로고) -->
         <div class="profile-container">
-            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000'><rect width='1000' height='1000' fill='%23000000'/><path d='M 274 334 L 724 334 L 890 666 L 812 666 L 678 397 L 543 666 L 110 666 Z M 320 398 L 256 526 L 384 526 Z' fill='%23ffffff' fill-rule='evenodd'/></svg>" alt="@archmonth 프로필" class="profile-image">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000'><rect width='1000' height='1000' fill='%23000000'/><path d='M 274 334 L 724 334 L 890 666 L 812 666 L 678 397 L 543 666 L 110 666 Z M 320 398 L 256 526 L 384 526 Z' fill='%23ffffff' fill-rule='evenodd'/></svg>" alt="@archmonth Profile" class="profile-image">
             <h1 class="profile-name">@archmonth</h1>
         </div>
 
-        <!-- 링크 버튼 모음 (총 5개) -->
+        <!-- 링크 버튼 모음 -->
         <div class="links-container">
             
-            <!-- 1. Behance Portfolio -->
+            <!-- 1. Behance Portfolio (흰색 바탕의 검은색 로고 썸네일 적용) -->
             <a href="https://behance.net" class="link-btn" target="_blank">
-                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000'><rect width='1000' height='1000' fill='%23000000'/><path d='M 274 334 L 724 334 L 890 666 L 812 666 L 678 397 L 543 666 L 110 666 Z M 320 398 L 256 526 L 384 526 Z' fill='%23ffffff' fill-rule='evenodd'/></svg>" alt="Thumbnail" class="btn-thumb">
+                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000'><rect width='1000' height='1000' fill='%23ffffff'/><path d='M 274 334 L 724 334 L 890 666 L 812 666 L 678 397 L 543 666 L 110 666 Z M 320 398 L 256 526 L 384 526 Z' fill='%23000000' fill-rule='evenodd'/></svg>" alt="Behance Thumbnail" class="btn-thumb">
                 <span>Behance Portfolio</span>
-                <span class="btn-more">⋮</span>
             </a>
 
             <!-- 2. YouTube -->
             <a href="https://www.youtube.com/@archmonth" class="link-btn" target="_blank">
                 <span>YouTube</span>
-                <span class="btn-more">⋮</span>
             </a>
 
             <!-- 3. Instagram -->
             <a href="https://instagram.com" class="link-btn" target="_blank">
                 <span>Instagram</span>
-                <span class="btn-more">⋮</span>
             </a>
 
             <!-- 4. Pinterest -->
             <a href="https://pinterest.com" class="link-btn" target="_blank">
                 <span>Pinterest</span>
-                <span class="btn-more">⋮</span>
             </a>
 
             <!-- 5. Wallpaper -->
             <a href="https://archmonth.gumroad.com/" class="link-btn" target="_blank">
                 <span>Wallpaper</span>
-                <span class="btn-more">⋮</span>
             </a>
 
         </div>
@@ -266,3 +240,4 @@
 
 </body>
 </html>
+
