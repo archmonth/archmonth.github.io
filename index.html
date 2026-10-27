@@ -69,7 +69,7 @@
 
         .spotify-btn {
             position: absolute;
-            top: 54px; /* 공유 버튼(44px) 바로 아래 10px 간격으로 배치 */
+            top: 54px; /* 공유 버튼 바로 아래 간격 */
             left: 0;
         }
 
@@ -92,17 +92,6 @@
         .icon-btn:hover {
             background-color: #f8f9fa;
             transform: scale(1.03);
-        }
-
-        /* 심플한 검은색 동그라미 로고 */
-        .circle-logo {
-            width: 18px;
-            height: 18px;
-            background-color: #000000;
-            border-radius: 50%;
-            border: 1.5px solid #ffffff;
-            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
-            display: inline-block;
         }
 
         /* 좌측 상단 버튼 클릭 시 나타나는 설명 박스 */
@@ -211,39 +200,46 @@
     <div class="container">
         <!-- 상단 아이콘 바 -->
         <div class="top-bar">
-            <!-- 좌측 동그라미 버튼 -->
+            <!-- 2번 이미지 (info.png): 좌측 상단 Information 버튼 -->
             <button class="icon-btn" aria-label="Info" onclick="toggleDescription()">
-                <span class="circle-logo"></span>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
             </button>
 
-            <!-- 우측 버튼 영역 (위: 공유하기 / 아래: 음악 링크 버튼) -->
+            <!-- 우측 버튼 영역 -->
             <div class="right-actions">
-                <!-- 1. 공유(Copy) 버튼 -->
+                <!-- 3번 이미지 (share-2.png): 우측 상단 공유(Copy) 버튼 -->
                 <button class="icon-btn" aria-label="Share" onclick="copyLink()">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
-                        <polyline points="16 6 12 2 8 6"/>
-                        <line x1="12" y1="2" x2="12" y2="15"/>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="18" cy="5" r="3"></circle>
+                        <circle cx="6" cy="12" r="3"></circle>
+                        <circle cx="18" cy="19" r="3"></circle>
+                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
                     </svg>
                 </button>
 
-                <!-- 2. 공유 버튼 바로 아래: 애플 뮤직 스타일 검은색 음표 아이콘 (클릭 시 Spotify 이동) -->
+                <!-- 1번 이미지 (disc-3.png): 공유 버튼 바로 아래 음악(Spotify) 버튼 -->
                 <a href="https://open.spotify.com/user/31vyv2yl2oclvpsbm33xeoabteua" target="_blank" class="icon-btn spotify-btn" aria-label="Music">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="#000000" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M19.5 3.2c0-.7-.6-1.1-1.3-.9l-9 2.4c-.7.2-1.2.8-1.2 1.5v9.4c-.6-.4-1.4-.6-2.2-.5-1.9.2-3.3 1.7-3.3 3.4 0 1.7 1.6 2.9 3.5 2.7 1.9-.2 3.5-1.7 3.5-3.5V9.9l8-2.1v6.4c-.6-.4-1.4-.6-2.2-.5-1.9.2-3.3 1.7-3.3 3.4 0 1.7 1.6 2.9 3.5 2.7 1.9-.2 3.5-1.7 3.5-3.5V3.2z"/>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <circle cx="12" cy="12" r="3"></circle>
                     </svg>
                 </a>
             </div>
         </div>
 
-        <!-- 좌측 상단 동그라미 버튼 클릭 시 나타나는 설명 영역 -->
+        <!-- 좌측 상단 버튼 클릭 시 나타나는 설명 영역 -->
         <div class="description-box" id="descBox">
             <div class="description-content">
                 Kevin Kwon ｜ Architecture in the Making｜ Month by Month
             </div>
         </div>
 
-        <!-- 프로필 영역 (검은색 바탕에 흰색 로고) -->
+        <!-- 프로필 영역 -->
         <div class="profile-container">
             <div class="profile-image">
                 <svg width="96" height="96" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
