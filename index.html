@@ -5,47 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arch Month | Profile</title>
     
-    <!-- 1. 기본 SVG 파비콘 (흰색 바탕에 검은색 로고 버전) -->
-    <link id="favicon" rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000'%3E%3Crect width='1000' height='1000' rx='180' fill='%23ffffff'/%3E%3Cpath d='M 274 334 L 724 334 L 890 666 L 812 666 L 678 397 L 543 666 L 110 666 Z M 320 398 L 256 526 L 384 526 Z' fill='%23000000' fill-rule='evenodd'/%3E%3C/svg%3E">
+    <!-- 1. GitHub에 올려두신 favicon.png(흰색 바탕에 검은색 로고) 직접 연결 -->
+    <link rel="icon" type="image/png" href="favicon.png?v=10">
+    <link rel="shortcut icon" type="image/png" href="favicon.png?v=10">
+    <link rel="apple-touch-icon" href="favicon.png?v=10">
 
-    <!-- 2. 흰색 배경 + 검은색 로고 PNG 파비콘을 즉시 생성하여 적용하는 스크립트 -->
+    <!-- 2. 크롬 지구본 캐시를 완전히 지우고 favicon.png를 강제로 띄우는 스크립트 -->
     <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            const canvas = document.createElement('canvas');
-            canvas.width = 128;
-            canvas.height = 128;
-            const ctx = canvas.getContext('2d');
+        window.addEventListener('load', function() {
+            const oldLinks = document.querySelectorAll("link[rel*='icon']");
+            oldLinks.forEach(el => el.parentNode.removeChild(el));
 
-            // 흰색 사각형 배경 그리기 (favicon.png와 동일)
-            ctx.fillStyle = '#ffffff';
-            ctx.fillRect(0, 0, 128, 128);
-
-            // 검은색 @archmonth 로고 그리기
-            ctx.fillStyle = '#000000';
-            ctx.beginPath();
-            const s = 128 / 1000;
-            // 바깥 도형
-            ctx.moveTo(274 * s, 334 * s);
-            ctx.lineTo(724 * s, 334 * s);
-            ctx.lineTo(890 * s, 666 * s);
-            ctx.lineTo(812 * s, 666 * s);
-            ctx.lineTo(678 * s, 397 * s);
-            ctx.lineTo(543 * s, 666 * s);
-            ctx.lineTo(110 * s, 666 * s);
-            ctx.closePath();
-            // 안쪽 삼각형 구멍
-            ctx.moveTo(320 * s, 398 * s);
-            ctx.lineTo(256 * s, 526 * s);
-            ctx.lineTo(384 * s, 526 * s);
-            ctx.closePath();
-            ctx.fill('evenodd');
-
-            // 생성된 PNG 이미지를 브라우저 탭 아이콘으로 강제 교체
-            const link = document.getElementById('favicon') || document.createElement('link');
-            link.type = 'image/png';
-            link.rel = 'shortcut icon';
-            link.href = canvas.toDataURL('image/png');
-            document.head.appendChild(link);
+            const newLink = document.createElement('link');
+            newLink.type = 'image/png';
+            newLink.rel = 'icon';
+            newLink.href = 'favicon.png?v=' + new Date().getTime(); // 매번 새 파일로 인식시켜 지구본 방지
+            document.head.appendChild(newLink);
         });
     </script>
 
@@ -299,5 +274,4 @@
 
 </body>
 </html>
-
 
