@@ -201,7 +201,8 @@
                 <span class="circle-logo"></span>
             </button>
 
-            <button class="icon-btn" aria-label="Share" onclick="alert('Link copied!')">
+            <!-- 우측 공유 버튼: 클릭 시 실제 링크 복사 함수(copyLink) 실행 -->
+            <button class="icon-btn" aria-label="Share" onclick="copyLink()">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
                     <polyline points="16 6 12 2 8 6"/>
@@ -270,8 +271,40 @@
             const descBox = document.getElementById('descBox');
             descBox.classList.toggle('active');
         }
+
+        // 클립보드에 실제로 링크를 복사하는 함수
+        function copyLink() {
+            const url = "https://archmonth.github.io/";
+            
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(url).then(() => {
+                    alert("Link copied!");
+                }).catch(() => {
+                    fallbackCopy(url);
+                });
+            } else {
+                fallbackCopy(url);
+            }
+        }
+
+        // 구형 브라우저나 일부 모바일 인앱 브라우저용 호환 복사 기능
+        function fallbackCopy(text) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.left = "-9999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                alert("Link copied!");
+            } catch (err) {
+                alert("Copy failed. URL: " + text);
+            }
+            document.body.removeChild(textArea);
+        }
     </script>
 
 </body>
 </html>
-
