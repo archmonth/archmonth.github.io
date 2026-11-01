@@ -5,21 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arch Month</title>
     
-    <!-- 1. GitHub에 올려두신 favicon.png 직접 연결 -->
-    <link rel="icon" type="image/png" href="favicon.png?v=10">
-    <link rel="shortcut icon" type="image/png" href="favicon.png?v=10">
-    <link rel="apple-touch-icon" href="favicon.png?v=10">
+    <!-- 글씨 크기에 맞게 여백을 최소화한 SVG 파비콘 직접 연결 -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='110 110 780 780'%3E%3Cpath d='M 274 334 L 724 334 L 890 666 L 812 666 L 678 397 L 543 666 L 110 666 Z M 320 398 L 256 526 L 384 526 Z' fill='%23000000' fill-rule='evenodd'/%3E%3C/svg%3E">
+    
+    <!-- 애플 기기 홈 화면 추가용 아이콘 (기존 파일 유지) -->
+    <link rel="apple-touch-icon" href="favicon.png?v=11">
 
-    <!-- 2. 크롬 지구본 캐시를 완전히 지우고 favicon.png를 강제로 띄우는 스크립트 -->
+    <!-- 크롬 캐시를 지우고 새 파비콘을 강제로 띄우는 스크립트 -->
     <script>
         window.addEventListener('load', function() {
+            const svgFavicon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='110 110 780 780'%3E%3Cpath d='M 274 334 L 724 334 L 890 666 L 812 666 L 678 397 L 543 666 L 110 666 Z M 320 398 L 256 526 L 384 526 Z' fill='%23000000' fill-rule='evenodd'/%3E%3C/svg%3E";
+            
             const oldLinks = document.querySelectorAll("link[rel*='icon']");
             oldLinks.forEach(el => el.parentNode.removeChild(el));
 
             const newLink = document.createElement('link');
-            newLink.type = 'image/png';
+            newLink.type = 'image/svg+xml';
             newLink.rel = 'icon';
-            newLink.href = 'favicon.png?v=' + new Date().getTime();
+            newLink.href = svgFavicon;
             document.head.appendChild(newLink);
         });
     </script>
@@ -174,7 +177,7 @@
         <div class="top-bar">
             <!-- 우측 버튼 영역 -->
             <div class="right-actions">
-                <!-- 우측 상단 공유(Copy) 버튼: 첨부해주신 새 아이콘 적용 -->
+                <!-- 우측 상단 공유(Copy) 버튼 -->
                 <button class="icon-btn" aria-label="Share" onclick="copyLink()">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2.6" stroke-linecap="butt" stroke-linejoin="miter" xmlns="http://www.w3.org/2000/svg">
                         <path d="M 8.5 3.5 H 3.5 V 20.5 H 20.5 V 15.5" />
@@ -284,4 +287,3 @@
 
 </body>
 </html>
-
