@@ -60,14 +60,14 @@
             position: relative;
         }
 
-        /* 우측 상단 버튼 모음 (공유 버튼 + 바로 아래 음악 버튼) */
+        /* 우측 상단 버튼 모음 (공유 버튼 + 바로 아래 로고 버튼) */
         .right-actions {
             position: relative;
             width: 44px;
             height: 44px;
         }
 
-        .spotify-btn {
+        .sub-link-btn {
             position: absolute;
             top: 54px; /* 공유 버튼 바로 아래 간격 */
             left: 0;
@@ -200,7 +200,7 @@
     <div class="container">
         <!-- 상단 아이콘 바 -->
         <div class="top-bar">
-            <!-- 2번 이미지 (info.png): 좌측 상단 Information 버튼 -->
+            <!-- 좌측 상단 Information 버튼 -->
             <button class="icon-btn" aria-label="Info" onclick="toggleDescription()">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="10"></circle>
@@ -211,7 +211,7 @@
 
             <!-- 우측 버튼 영역 -->
             <div class="right-actions">
-                <!-- 3번 이미지 (share-2.png): 우측 상단 공유(Copy) 버튼 -->
+                <!-- 우측 상단 공유(Copy) 버튼 -->
                 <button class="icon-btn" aria-label="Share" onclick="copyLink()">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="18" cy="5" r="3"></circle>
@@ -222,11 +222,14 @@
                     </svg>
                 </button>
 
-                <!-- 1번 이미지 (disc-3.png): 공유 버튼 바로 아래 음악(Spotify) 버튼 -->
-                <a href="https://open.spotify.com/user/31vyv2yl2oclvpsbm33xeoabteua" target="_blank" class="icon-btn spotify-btn" aria-label="Music">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <circle cx="12" cy="12" r="3"></circle>
+                <!-- 공유 버튼 바로 아래: 2번째 사진(KK 9) 로고 아이콘 적용 및 링크 변경 -->
+                <!-- 만약 주소가 https://inkevink.github.io/ 라면 href 부분만 수정해 주세요 -->
+                <a href="https://archmonth.github.io/inkevink/" target="_blank" class="icon-btn sub-link-btn" aria-label="Inkevink">
+                    <svg width="20" height="20" viewBox="200 200 600 600" fill="#000000" xmlns="http://www.w3.org/2000/svg">
+                        <!-- 좌측 상단 사각형 점 -->
+                        <rect x="250" y="250" width="99" height="90" />
+                        <!-- 메인 기하학 심볼 -->
+                        <path d="M 250 439 H 349 V 531 L 509 250 L 595 299 L 451 551 L 701 408 L 750 494 L 474 651 H 750 V 750 H 250 Z" />
                     </svg>
                 </a>
             </div>
@@ -333,4 +336,5 @@
 
 </body>
 </html>
+
 
